@@ -1,0 +1,58 @@
+.Modal
+{
+	position: fixed;
+	margin: auto;
+	left: 2em;
+	top: 2em;
+	right: 2em;
+	bottom: 2em;
+	background-color: white;
+	border-color: black;
+	border-style: solid;
+	border-width: 2px;
+	padding: 1em;
+	
+	&.hide
+	{
+		display: none;
+	}
+	
+	.close
+	{
+		position: absolute;
+		top: 1em;
+		right: 1em;
+	}
+	
+	.content
+	{
+		height: 12em;
+		margin-bottom: 1em;
+	}
+	
+	.images
+	{
+		overflow: auto;
+		height: calc(100% - 14em);
+		position: relative;
+		margin-bottom: 0;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		
+		.imgContainer
+		{
+			width: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			
+			img
+			{
+				max-width: 100%;
+				height: auto;
+				padding: 1em;
+			}
+		}
+	}
+}
