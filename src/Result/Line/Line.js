@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import LazyLoadComponent from 'react-intersection-observer-lazy-load'
 import * as api from '../../api/api';
 import './Line.scss';
 
 const Line = ({m, i}) =>
 {
 	const [showModal, setShowModal] = useState(false);
-	const [archives, setArchives] = useState([]);
 	const [listAlbum, setListAlbum] = useState([]);
 	const [covertArts, setCoversArts] = useState([]);
 
@@ -30,14 +30,14 @@ const Line = ({m, i}) =>
 	const hideModal = () => setShowModal(false);
 	
 	useEffect(() => {
-		if (typeof m.releases !== 'undefined' && !archives.length)
+		if (typeof m.releases !== 'undefined' && !listAlbum.length)
 			m.releases.map((r, i) => {
-				setArchives(archives => [...archives, r.id]);
 				setListAlbum(listAlbum => [...listAlbum, r.title]);
 				
 				api.getCovertArtArchive(setCoversArts, covertArts, r.id);
+				return r;
 			});
-	}, [archives, m, m.releases, covertArts]);
+	}, [m, m.releases, covertArts, listAlbum.length]);
 
 	return (
 		<tr>
@@ -82,9 +82,11 @@ const Line = ({m, i}) =>
 							c => c.images.map(
 								i => {
 									return (
-										<div className='imgContainer'>
-											<img src={i.image} />
-										</div>
+										<LazyLoadComponent key={i.id}>
+											<div className='imgContainer'>
+												<img src={i.image} alt={'image for ' + m.title} />
+											</div>
+										</LazyLoadComponent>
 									);
 								}
 							)
