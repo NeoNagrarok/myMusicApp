@@ -15,6 +15,7 @@ const Input = ({setter, value}) =>
 				name="research"
 				value={value}
 				onChange={onChangeHandle}
+				required
 			/>
 		</label>
 	);

@@ -1,41 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
+import {
+	BrowserRouter as Router,
+	Route
+} from "react-router-dom";
 import './App.scss';
-import Research from './Research/Research';
-import Result from './Result/Result';
+import Main from './Main';
 
 
 function App()
 {
-	const [finalInput, setFinalInput] = useState('');
-	const [finalSelect, setFinalSelect] = useState('');
-	const [reset, setReset] = useState(false);
-
 	return (
-		<main>
-			<Research
-				setters={
-					{
-						"setFinalInput":setFinalInput,
-						"setFinalSelect":setFinalSelect,
-						"setReset":setReset
-					}
-				}
-			/>
-			<Result
-				getters={
-					{
-						"input": finalInput,
-						"select": finalSelect,
-						"reset": reset
-					}
-				}
-				setters={
-					{
-						"setReset":setReset
-					}
-				}
-			/>
-		</main>
+		<Router>
+			<Route exact path="/:select/:input/" component={Main} />
+			<Route exact path="/:none" component={Main} />
+			<Route exact path="/" component={Main} />
+		</Router>
 	);
 }
 

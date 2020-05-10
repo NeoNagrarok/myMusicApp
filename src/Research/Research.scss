@@ -1,0 +1,28 @@
+@import 'src/_partials/_var.scss';
+
+.ResearchForm
+{
+	background-color: $base-color;
+	position: sticky;
+	top: 0;
+	height: 4em;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding-left: 1em;
+	
+	label
+	{
+		padding-right: 1em;
+	}
+	
+	label:first-child
+	{
+		width: 100%;
+		
+		input
+		{
+			width: 100%;
+		}
+	}
+}

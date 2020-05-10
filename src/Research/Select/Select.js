@@ -1,8 +1,14 @@
 import React from 'react';
 
-const Select = ({setter, value}) =>
+const Select = ({setter, value, submit}) =>
 {
 	const onChangeHandle = e => setter(e.target.value);
+	
+	const handleKeyPress = (e) =>
+	{
+		if(e.key === 'Enter')
+			submit(e)
+	}
 
 	return (
 		<label htmlFor="select">
@@ -14,6 +20,8 @@ const Select = ({setter, value}) =>
 				name="select"
 				value={value}
 				onChange={onChangeHandle}
+				onKeyPress={handleKeyPress}
+				required
 			>
 				<option value="everything">Everything</option>
 				<option value="artist">Artist</option>

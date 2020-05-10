@@ -1,0 +1,17 @@
+@import 'src/_partials/_var.scss';
+
+body
+{
+	background-color: $base-color;
+}
+
+main
+{
+	background-color: $base-color;
+	
+	h1
+	{
+		padding: 2em;
+		color: $complementary-color;
+	}
+}

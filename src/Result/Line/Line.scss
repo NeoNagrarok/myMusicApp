@@ -1,39 +1,61 @@
+@import 'src/_partials/_var.scss';
+
+.hide
+{
+	display: none;
+}
+
+.ModalBackground
+{
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(150, 150, 150, 0.5);
+	z-index: 500;
+}
+
 .Modal
 {
 	position: fixed;
 	margin: auto;
-	left: 2em;
+	left: 16em;
 	top: 2em;
-	right: 2em;
+	right: 16em;
 	bottom: 2em;
 	background-color: white;
 	border-color: black;
 	border-style: solid;
 	border-width: 2px;
 	padding: 1em;
-	
-	&.hide
-	{
-		display: none;
-	}
+	background-color: $other-color;
+	color: $dark-color;
+	z-index: 1000;
+	cursor: initial;
 	
 	.close
 	{
 		position: absolute;
 		top: 1em;
 		right: 1em;
+		
+		&:hover
+		{
+			cursor: pointer;
+		}
 	}
 	
 	.content
 	{
-		height: 12em;
+		height: 18em;
 		margin-bottom: 1em;
 	}
 	
 	.images
 	{
 		overflow: auto;
-		height: calc(100% - 14em);
+		height: calc(100% - 20em);
 		position: relative;
 		margin-bottom: 0;
 		display: flex;
@@ -54,5 +76,23 @@
 				padding: 1em;
 			}
 		}
+	}
+}
+
+.seeMore
+{
+	border: none;
+	border-radius: 25px;
+/*	width: 2em;*/
+	padding: 1em;
+	font-weight: bold;
+	color: $base-color;
+	background-color: $dark-color;
+	
+	&:hover, &:focus
+	{
+		background-color: $base-color;
+		color: $complementary-color;
+		cursor: pointer;
 	}
 }

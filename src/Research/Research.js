@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import Input from './Input/Input';
 import Select from './Select/Select';
 import Submit from './Submit/Submit';
+import './Research.scss';
 
-const Research = ({setters:{setFinalInput, setFinalSelect, setReset}}) =>
+const Research = ({setters:{setReset}, getters:{inputValue, selectValue}}) =>
 {
-	const [input, setInput] = useState('');
-	const [select, setSelect] = useState('everything');
+	const [input, setInput] = useState(inputValue || '');
+	const [select, setSelect] = useState(selectValue || 'everything');
+	
+	const history = useHistory();
 	
 	const handleSubmit = e =>
 	{
 		e.preventDefault();
-		setFinalInput(input);
-		setFinalSelect(select);
 		setReset(true);
+		history.push('/' + select + '/' + input);
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form className="ResearchForm" onSubmit={handleSubmit}>
 			<Input setter={setInput} value={input} />
-			<Select setter={setSelect} value={select} />
+			<Select setter={setSelect} value={select} submit={handleSubmit} />
 			<Submit />
 		</form>
 	);
